@@ -1,153 +1,118 @@
-# TradeX — Professional Paper Trading Platform
+# StockHub
 
-A full-stack MERN application for paper trading with real-time simulated prices, portfolio tracking, market news, and an AI-powered chat advisor.
+A full-stack paper trading platform built with the MERN stack. Users get $100,000 in virtual money to buy and sell stocks with real-time price updates, a server-side stop-loss engine, and an AI-powered chatbot.
 
----
+## Features
 
-## 🚀 Quick Start
+- **Real-time prices** via Finnhub WebSocket feed — falls back to simulated prices if API is unavailable
+- **Paper trading** — buy and sell stocks with virtual money, no real money involved
+- **Stop-loss engine** — server-side logic that auto-sells a stock when it drops below your set price and instantly pushes the updated balance to your screen
+- **AI chatbot** — powered by Groq (LLaMA 3.3-70B) for trading insights and market questions
+- **JWT authentication** — secure login and registration with bcrypt password hashing
+- **Portfolio tracking** — view holdings, profit/loss, and trade history
+- **Stock news feed** — latest market news via NewsAPI
+- **Rate limiting** — 200 requests per 15 minutes per IP
 
-### Prerequisites
-- Node.js 18+
-- MongoDB (local or Atlas free tier)
+## Tech Stack
 
-### 1. Clone & Install
-
-```bash
-# Server
-cd server
-npm install
-cp .env.example .env
-# Edit .env with your API keys
-
-# Client
-cd ../client
-npm install
-```
-
-### 2. Configure Environment
-
-Edit `server/.env`:
-
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/trading_platform
-JWT_SECRET=your_super_secret_key_change_this
-
-# Optional — real AI chat responses
-GEMINI_API_KEY=your_gemini_key_from_aistudio.google.com
-
-# Optional — real news articles
-NEWS_API_KEY=your_key_from_newsapi.org
-```
-
-### 3. Run
-
-```bash
-# Terminal 1 — Start MongoDB
-mongod
-
-# Terminal 2 — Start server
-cd server && npm run dev
-
-# Terminal 3 — Start client
-cd client && npm start
-```
-
-Open **http://localhost:3000**
-
----
-
-## 🔑 API Keys (All Free Tier)
-
-| Service | Purpose | Link |
-|---|---|---|
-| **Gemini AI** | AI chat advisor | [aistudio.google.com](https://aistudio.google.com) |
-| **NewsAPI** | Real market news | [newsapi.org](https://newsapi.org) |
-
-> Without API keys, the app still works fully — it uses intelligent mock data for news and fallback responses for the AI chat.
-
----
-
-## 📱 Features
-
-| Feature | Description |
-|---|---|
-| 💰 **Paper Trading** | Start with $100,000 virtual money |
-| 📈 **Live Prices** | WebSocket price feed, 50 stocks, updates every 1.5s |
-| 🔍 **Stock Search** | Search by ticker or company name |
-| 📊 **Charts** | Intraday + multi-day charts with Recharts |
-| 🗂️ **Portfolio** | Holdings, sector allocation, P&L tracking |
-| 📰 **News Feed** | Categorized financial news with sentiment tags |
-| 📋 **Trade History** | Full audit log with pagination |
-| 🤖 **AI Advisor** | Gemini-powered chat with live market context |
-| 🔐 **Auth** | JWT-based register/login |
-
----
-
-## 🏗️ Architecture
-
-```
-tradex/
-├── server/                     # Express + MongoDB
-│   ├── index.js                # Entry point + WebSocket server
-│   ├── models/                 # Mongoose schemas
-│   │   ├── User.js
-│   │   ├── Portfolio.js
-│   │   └── Trade.js
-│   ├── routes/                 # REST API endpoints
-│   │   ├── auth.js             # POST /login, /register
-│   │   ├── stocks.js           # GET /stocks, /stocks/:symbol
-│   │   ├── trades.js           # POST /trades, GET /history
-│   │   ├── portfolio.js        # GET /portfolio
-│   │   ├── news.js             # GET /news
-│   │   └── chat.js             # POST /chat (Gemini)
-│   └── services/
-│       └── priceSimulator.js   # WebSocket price engine
-│
-└── client/src/                 # React 18
-    ├── App.js                  # Router + Auth guard
-    ├── context/
-    │   ├── AuthContext.js      # JWT auth state
-    │   └── PricesContext.js    # Live price state
-    ├── hooks/
-    │   └── useWebSocket.js     # WS connection + flash
-    ├── components/Layout/      # Sidebar + Header
-    └── pages/
-        ├── DashboardPage.jsx   # Overview + charts
-        ├── MarketsPage.jsx     # All stocks table
-        ├── TradePage.jsx       # Buy/sell + chart
-        ├── PortfolioPage.jsx   # Holdings + pie chart
-        ├── NewsPage.jsx        # News feed
-        ├── HistoryPage.jsx     # Trade log
-        └── ChatPage.jsx        # AI advisor
-```
-
----
-
-## 🛠️ Tech Stack
+**Frontend**
+- React
+- Context API for state management
+- WebSocket client for live price updates
+- CSS Modules
 
 **Backend**
 - Node.js + Express
 - MongoDB + Mongoose
-- WebSocket (ws)
-- JWT + bcryptjs
-- node-cache
+- WebSocket (ws library)
+- JWT + bcrypt for auth
+- Axios for external API calls
 
-**Frontend**
-- React 18 + React Router v6
-- Recharts (area, pie charts)
-- CSS Modules (no Tailwind — pure CSS vars)
-- react-hot-toast
-- Framer Motion ready
+**External APIs**
+- Finnhub — real-time stock prices and candle data
+- Groq (LLaMA 3.3-70B) — AI chatbot
+- NewsAPI — market news
 
-**AI**
-- Google Gemini 1.5 Flash API
+## Project Structure
 
----
+```
+StockHub/
+├── client/                  # React frontend
+│   └── src/
+│       ├── components/      # Layout, Header, Sidebar
+│       ├── context/         # Auth and Prices context
+│       ├── hooks/           # useWebSocket hook
+│       ├── pages/           # Dashboard, Trade, Portfolio, Chat, News
+│       └── services/        # API calls
+│
+└── server/                  # Express backend
+    ├── middleware/           # JWT auth middleware
+    ├── models/              # User, Portfolio, Trade, Stock schemas
+    ├── routes/              # auth, stocks, portfolio, trades, news, chat
+    └── services/            # priceSimulator, newsService, aiService
+```
 
-## 📌 Notes
+## Getting Started
 
-- All prices are **simulated** — not connected to real exchanges
-- This is a **paper trading platform only** — no real money
-- Prices update every ~1.5 seconds via WebSocket
-- 50 major US stocks are tracked (S&P 500 top holdings)
+### Prerequisites
+- Node.js v18+
+- MongoDB running locally or a MongoDB Atlas URI
+- Finnhub API key (free at finnhub.io)
+- NewsAPI key (free at newsapi.org)
+- Groq API key (free at console.groq.com)
+
+### Setup
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/Muqqeeth/StockHub.git
+cd StockHub
+```
+
+**2. Setup the server**
+```bash
+cd server
+npm install
+cp .env.example .env
+# Fill in your API keys in .env
+```
+
+**3. Setup the client**
+```bash
+cd ../client
+npm install
+```
+
+**4. Run both**
+
+In one terminal:
+```bash
+cd server
+npm start
+```
+
+In another terminal:
+```bash
+cd client
+npm start
+```
+
+App runs at `http://localhost:3000`, server at `http://localhost:5000`.
+
+## Environment Variables
+
+Create a `.env` file inside the `server/` folder using `.env.example` as reference:
+
+```
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+CLIENT_URL=http://localhost:3000
+FINNHUB_API_KEY=your_finnhub_key
+NEWS_API_KEY=your_newsapi_key
+```
+
+## How the Stop-Loss Works
+
+When a user sets a stop-loss on a stock, the server monitors live prices in `priceSimulator.js`. When the price drops below the set threshold, the server automatically executes a sell order and broadcasts the updated balance to the user's browser via WebSocket — no page refresh needed.
+
