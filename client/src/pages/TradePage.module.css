@@ -1,0 +1,232 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+.leftPanel { display: flex; flex-direction: column; gap: 16px; }
+.rightPanel { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 100px; }
+
+.stockHeader { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+.stockInfo { display: flex; align-items: center; gap: 14px; }
+
+.symBadge {
+  width: 52px;
+  height: 52px;
+  background: var(--accent-blue-dim);
+  border: 1px solid var(--accent-blue-glow);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.stockName { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+.stockSector { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+
+.realBadge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(16,185,129,0.2);
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.priceBlock { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.livePrice { font-size: 32px; font-weight: 700; }
+.changeBadge { font-size: 14px; padding: 5px 12px; }
+
+.ohlcRow { display: flex; gap: 24px; flex-wrap: wrap; }
+.ohlcItem { display: flex; flex-direction: column; gap: 4px; }
+.ohlcLabel { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+
+.chartCard { padding: 20px; }
+.chartControls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.chartTitle { font-size: 15px; font-weight: 700; }
+.timeRanges { display: flex; gap: 4px; }
+
+.rangeBtn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rangeBtn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+.rangeBtn.active { background: var(--accent-blue-dim); border-color: var(--accent-blue); color: var(--accent-blue); }
+
+/* Stop Loss Card */
+.slCard { padding: 20px; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+.slHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.slTitle { font-size: 15px; font-weight: 700; }
+.slCount { font-size: 12px; color: var(--text-muted); background: var(--bg-elevated); padding: 3px 10px; border-radius: 10px; }
+
+.slItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.slItem:last-child { border-bottom: none; }
+
+.slAtRisk {
+  background: var(--red-dim);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  margin-bottom: 4px;
+}
+
+.slLeft { display: flex; flex-direction: column; gap: 2px; min-width: 80px; }
+.slSym { font-family: var(--font-mono); font-weight: 700; font-size: 15px; color: var(--accent-blue); }
+.slShares { font-size: 11px; color: var(--text-muted); }
+
+.slMid { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.slLabel { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.06em; }
+.slPrice { font-size: 16px; font-weight: 700; color: var(--red); }
+.slDist { font-size: 11px; font-weight: 600; }
+
+.slActions { display: flex; gap: 6px; align-items: center; }
+.slInput { width: 100px; height: 32px; font-size: 13px; padding: 4px 10px; }
+
+.newsCard { padding: 20px; }
+.newsTitle { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+
+.searchCard { padding: 16px; }
+.symbolInput { font-family: var(--font-mono) !important; font-weight: 700 !important; font-size: 16px !important; }
+.hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+.orderCard { padding: 20px; }
+
+.orderTabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+
+.orderTab {
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.05em;
+}
+
+.tabBuy { background: var(--green-dim); border-color: rgba(16,185,129,0.3); color: var(--green); }
+.tabSell { background: var(--red-dim); border-color: rgba(239,68,68,0.3); color: var(--red); }
+
+.orderBody { display: flex; flex-direction: column; gap: 16px; }
+
+.orderField { display: flex; flex-direction: column; gap: 6px; }
+.fieldLabel { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; display: flex; align-items: center; gap: 6px; }
+.optional { font-size: 10px; color: var(--text-muted); text-transform: none; font-weight: 400; }
+.marketPrice { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+.totalPrice { font-size: 20px; font-weight: 700; color: var(--accent-blue); }
+
+.sharesInput { font-family: var(--font-mono) !important; font-size: 18px !important; font-weight: 700 !important; }
+
+.fractionBtns { display: flex; gap: 6px; margin-top: 6px; }
+
+.fracBtn {
+  flex: 1;
+  padding: 5px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.fracBtn:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: var(--accent-blue-dim); }
+
+.slHint {
+  padding: 8px 10px;
+  background: var(--red-dim);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.balanceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+}
+
+.holdingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--accent-blue-dim);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: var(--radius-sm);
+}
+
+.holdingDetail { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+
+.executeBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.disclaimer { font-size: 11px; color: var(--text-muted); text-align: center; line-height: 1.4; }
+
+.portfolioCard { padding: 16px; }
+.cardMiniTitle { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-secondary); }
+
+.posItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+}
+
+.posItem:hover { background: var(--bg-elevated); }
+.posActive { background: var(--accent-blue-dim); border: 1px solid rgba(59,130,246,0.2); }
+.posSym { font-family: var(--font-mono); font-weight: 700; flex: 1; font-size: 14px; }
+.slDot { font-size: 12px; }
+
+@media (max-width: 1100px) {
+  .page { grid-template-columns: 1fr; }
+  .rightPanel { position: static; }
+}

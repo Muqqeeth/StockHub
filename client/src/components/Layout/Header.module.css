@@ -1,0 +1,151 @@
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.tickerWrapper {
+  overflow: hidden;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.ticker {
+  display: flex;
+  gap: 0;
+  animation: scroll 60s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker:hover { animation-play-state: paused; }
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tickerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-right: 1px solid var(--border);
+  height: 36px;
+  font-size: 12px;
+}
+
+.tickerItem:hover { background: var(--bg-elevated); }
+
+.tickerSym {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.tickerPrice {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.tickerPos { color: var(--green); font-size: 11px; font-weight: 600; }
+.tickerNeg { color: var(--red); font-size: 11px; font-weight: 600; }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  max-width: 440px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.searchInput {
+  padding-left: 36px !important;
+  height: 38px;
+  font-size: 13px;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+  z-index: 200;
+}
+
+.dropdownItem {
+  display: grid;
+  grid-template-columns: 72px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+}
+
+.dropdownItem:hover { background: var(--bg-card-hover); }
+
+.dropSym {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.dropName {
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropPrice {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.balancePill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dim);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 20px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+
+.balanceAmt {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+}

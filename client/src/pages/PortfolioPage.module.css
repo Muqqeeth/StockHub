@@ -1,0 +1,130 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.pageHeader { display: flex; justify-content: space-between; align-items: center; }
+.title { font-size: 24px; font-weight: 700; }
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.summaryCard {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summaryLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.summaryValue {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+.perfCard { padding: 20px; }
+.pieCard { padding: 20px; }
+.cardTitle { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+
+.sectorCard { padding: 20px; }
+.sectorList { display: flex; flex-direction: column; gap: 14px; }
+
+.sectorItem { display: flex; flex-direction: column; gap: 6px; }
+.sectorTop { display: flex; align-items: center; gap: 10px; }
+.sectorName { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.sectorPct { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); width: 42px; text-align: right; }
+
+.sectorBar {
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sectorFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.holdingsCard { overflow: hidden; }
+
+.holdingsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.tableHead, .tableRow {
+  display: grid;
+  grid-template-columns: 80px 1fr 70px 90px 90px 110px 100px 90px 90px 80px;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  gap: 4px;
+}
+
+.tableHead {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.tableRow:last-child { border-bottom: none; }
+.tableRow:hover { background: var(--bg-card-hover); }
+
+.symCell { }
+.sym { font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--accent-blue); }
+.nameCell { color: var(--text-secondary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 1400px) {
+  .summaryGrid { grid-template-columns: repeat(3, 1fr); }
+  .mainGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1100px) {
+  .tableHead, .tableRow { grid-template-columns: 80px 1fr 70px 90px 90px 100px 80px; }
+  .tableHead > div:nth-child(8), .tableRow > div:nth-child(8),
+  .tableHead > div:nth-child(9), .tableRow > div:nth-child(9) { display: none; }
+}
+
+@media (max-width: 768px) {
+  .summaryGrid { grid-template-columns: repeat(2, 1fr); }
+}

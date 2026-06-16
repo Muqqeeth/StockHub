@@ -1,0 +1,171 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.loadingGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skeletonCard { height: 120px; border-radius: var(--radius-lg); }
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.greeting { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.greetingSub { font-size: 14px; color: var(--text-secondary); }
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statLabel { font-size: 12px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.statValue { font-family: var(--font-mono); font-size: 22px; font-weight: 700; }
+.statSub { font-size: 11px; color: var(--text-muted); }
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+
+.chartCard { padding: 20px; }
+.moversCard { padding: 20px; }
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cardTitle { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+
+.moversList { display: flex; flex-direction: column; gap: 4px; }
+
+.moverItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.moverItem:hover { background: var(--bg-elevated); border-color: var(--border); }
+
+.moverLeft { display: flex; flex-direction: column; gap: 2px; }
+.moverSym { font-family: var(--font-mono); font-weight: 700; font-size: 14px; }
+.moverName { font-size: 11px; color: var(--text-muted); }
+.moverRight { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.moverPrice { font-size: 14px; }
+
+.tooltip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+}
+
+.tooltipDate { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.tooltipValue { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--text-primary); }
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+}
+
+.holdingsCard { padding: 20px; }
+.statsCard { padding: 20px; }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.holdingsTable { display: flex; flex-direction: column; gap: 2px; }
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 80px 70px 90px 90px 1fr;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 80px 70px 90px 90px 1fr;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+  align-items: center;
+}
+
+.tableRow:hover { background: var(--bg-elevated); }
+
+.holdSym { font-family: var(--font-mono); font-weight: 700; color: var(--accent-blue); }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.statItem {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fullWidth { grid-column: 1 / -1; }
+
+.statItemVal { font-family: var(--font-mono); font-size: 20px; font-weight: 700; }
+.statItemLabel { font-size: 11px; color: var(--text-muted); }
+
+.recentTrades { display: flex; flex-direction: column; gap: 6px; }
+
+.recentItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.recentItem:last-child { border-bottom: none; }
+.recentSym { font-family: var(--font-mono); font-weight: 700; font-size: 13px; }
+.recentTotal { margin-left: auto; }
+
+@media (max-width: 1200px) {
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+  .mainGrid { grid-template-columns: 1fr; }
+  .bottomGrid { grid-template-columns: 1fr; }
+}
